@@ -1,4 +1,4 @@
 Le-Verger
 =========
 
-WebSite leverger.fr.ht
+Code HTML, CSS et JavaScript du site internet http://leverger.fr.ht
