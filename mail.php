@@ -48,7 +48,7 @@ if($_POST) {
 	else {
 	
 		/* Destinataire (votre adresse e-mail) */
-		$to = 'xavier.pocquerusse@gmail.com';
+		$to = 'hauchjo@aol.com';
 	 
 		/* Construction du message */
 		$msg  = 'Joëlle,'."\r\n\r\n";
