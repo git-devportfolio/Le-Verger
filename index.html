@@ -12,11 +12,12 @@
     <title>Chambre d'hôtes "Le Verger"</title>
 
     <meta name="description" content="">
-    <!--
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+
     <!-- STYLESHEET -->
     <link rel="stylesheet" href="css/knacss.css">
     <link rel="stylesheet" href="css/style.css">
@@ -30,8 +31,8 @@
     <link href="js/vendor/fresco-1.6.0-light/css/fresco/fresco.css" rel="stylesheet" />
 
     <!-- PICKER -->
-    <link href="js/vendor/pickadate/lib/compressed/themes/default.css" rel="stylesheet" />
-    <link href="js/vendor/pickadate/lib/compressed/themes/default.date.css" rel="stylesheet" />
+    <link href="js/vendor/pickadate/lib/compressed/themes/classic.css" rel="stylesheet" />
+    <link href="js/vendor/pickadate/lib/compressed/themes/classic.date.css" rel="stylesheet" />
 
     <!-- MODERNIZR -->
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
@@ -40,19 +41,20 @@
 <body>
 
     <!--[if lt IE 9]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <p class="browserupgrade">Vous utilisez un navigateur <strong>désué</strong>. Veuillez <a href="http://browsehappy.com/">mettre à jour</a> votre navigateur  pour améliorer votre expérience.<br /></p>
     <![endif]-->
+
     <!--
         HEADER
     -->
-
+    
     <header id="header" class="header">
 
         <div class="mw960p center grid">
 
             <div class="grid1-2">
                 <h1 class="header-logo small-wauto">
-                    <img src="img/header-logo.png" width="172" height="108" alt="Le Verger" />
+                    <img src="img/header-logo.png" width="200" alt="Le Verger" />
                 </h1>
                 <nav class="header-nav small-wauto" role="navigation">
                     <a href="#header">Accueil</a>
@@ -158,7 +160,7 @@
                     <h3 class="article-title pl1em">Nous Retrouver ?</h3>
                     <address class="article-text article-address">
                         Mr et Mme <br />
-                        Christian HAUCHCORNE<br />
+                        Christian HAUCHECORNE<br />
                         545 Chemin des Damettes <br />
                         76430 GOMMERVILLE <br />
                     </address>
@@ -198,25 +200,27 @@
 
                     <h3 class="article-title light-color pl1em">Nous Contacter ?</h3>
 
-                    <form class="ptm" action="http://localhost/leverger_old/mail.php" method="post">
+                    <form class="ptm" action="http://devportfolio.net/le-verger/mail.php" method="post">
                         <p>
-                            <input class="ui-input" type="text" name="name" maxlength="50" placeholder="Nom et Prénom" required />
+                            <input class="ui-input" type="text" name="name" maxlength="50" placeholder="Nom et Prénom *" required />
                         </p>
 
                         <p>
-                            <input class="ui-input" type="email" name="email-from" maxlength="100" placeholder="Email" required />
+                            <input class="ui-input" type="email" name="email-from" maxlength="100" placeholder="Email *" required />
                         </p>
 
                         <p>
-                            <input class="ui-input datepicker" type="text" name="visit-date-from" maxlength="100" placeholder="date d'arrivée" />
+                            <div class="fieldset_wrapper">
+                                <input class="ui-input datepicker" type="text" name="visit-date-from" maxlength="100" placeholder="date d'arrivée" readonly />
+                            </div>
                         </p>
 
                         <p>
-                            <input class="ui-input datepicker" type="text" name="visit-date-to" maxlength="100" placeholder="date de départ" />
+                            <input class="ui-input datepicker" type="text" name="visit-date-to" maxlength="100" placeholder="date de départ" readonly />
                         </p>
 
                         <p>
-                            <textarea class="ui-input" rows="10" name="message" id="message" placeholder="Message..." required></textarea>
+                            <textarea class="ui-input" rows="10" name="message" id="message" placeholder="Message... *" required></textarea>
                         </p>
 
                         <p>
@@ -229,8 +233,8 @@
                         </p>
 
                         <p class="success ui-input visually-hidden">
-                            Parfait le message est envoyé ! <br />
-                            Je vous envoi la réponse très prochainement.
+                            Le message a bien été envoyé... <br />
+                            Je vous envoi une réponse très prochainement.
                         </p>
                     </form>
                 </article>
@@ -242,7 +246,7 @@
                     <address class="light-color article-address ptl pl2em">
                         <img src="img/icon-contact-address.svg" /> <br /><br />
                         Mr et Mme <br />
-                        Christian HAUCHCORNE <br />
+                        Christian HAUCHECORNE <br />
                         Chemin des Damettes <br />
                         76430 GOMMERVILLE <br /><br />
                         <img src="img/iconmonstr-email-11-icon.svg" /> <br /><br />
@@ -302,7 +306,9 @@
     <script src="js/vendor/pickadate/lib/compressed/translations/fr_FR.js"></script>
 
     <!-- CUSTOM JAVASCRIPT -->
+    <!--
     <script src="js/plugins.js"></script>
+    -->
     <script src="js/main.js"></script>
 </body>
 </html>

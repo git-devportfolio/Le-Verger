@@ -10,15 +10,19 @@ if($_POST) {
       $nom	     	= stripslashes(trim($_POST['name']));
       $expediteur	= stripslashes(trim($_POST['email']));
       $message		= stripslashes(trim($_POST['message']));
+	  $dtfrom 		= stripslashes(trim($_POST['dtfrom']));
+	  $dtto 			= stripslashes(trim($_POST['dtto']));
     }
     else
     {
       $nom		    = trim($_POST['nom']);
       $expediteur	= trim($_POST['email']);
       $message		= trim($_POST['message']);
+	  $dtfrom 		= trim($_POST['dtfrom']);
+	  $dtto 		= trim($_POST['dtto']);
     }
 	
-	$sujet = 'Quelqu\'un à posté un message sur arche.contes.tumblr.com';
+	$sujet = $nom.' a laissé un message sur le site leverger.fr.ht';
 	
 	/* Expression régulière permettant de vérifier si le 
     * format d'une adresse e-mail est correct */
@@ -30,7 +34,7 @@ if($_POST) {
 	
 	if ( empty($nom) || empty($expediteur) || empty($sujet) || empty($message) ) {
 	
-		echo('Des champs importants ne sont pas renseignés');	
+		echo('Des champs importants ne sont pas renseignés'.$nom.$expediteur.$sujet.$message);	
 	}
 	elseif (!preg_match($regex_mail, $expediteur)) {
 	 
@@ -44,44 +48,27 @@ if($_POST) {
 	else {
 	
 		/* Destinataire (votre adresse e-mail) */
-        $to = 'xavier.pocquerusse@gmail.com';
- 
-        /* Construction du message */
-        $msg  = 'Michael,'."\r\n\r\n";
-        $msg .= 'Ce mail a été envoyé depuis arche.contes.tumblr.com par '.$nom." (" .$expediteur.")\r\n\r\n";
-        $msg .= 'Voici le message qui vous est adressé :'."\r\n";
-        $msg .= '---------------------------------------'."\r\n";
-        $msg .= $message."\r\n";
-        $msg .= '---------------------------------------'."\r\n";
- 
-		/* En-têtes de l'e-mail */
-		if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $to)) {	/* On filtre les serveurs qui rencontrent des bogues. */
-			$passage_ligne = "\r\n";
-		} else {
-			$passage_ligne = "\n";
-		}
-		
-		/* Création de la boundary */
-		$boundary = "-----=".md5(rand());
-
-		/* Création du header de l'e-mail */
-		$header = "From: \"$nom\"<arche.contes@tumblr.com>".$passage_ligne;
-		$header.= "Reply-to: \"$nom\" <arche.contes@tumblr.com>".$passage_ligne;
-		$header.= "MIME-Version: 1.0".$passage_ligne;
-		$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
-		
+		$to = 'xavier.pocquerusse@gmail.com';
+	 
+		/* Construction du message */
+		$msg  = 'Joëlle,'."\r\n\r\n";
+		$msg .= 'Ce mail a été envoyé depuis le site leverger.fr.ht par '.$nom." (" .$expediteur.")\r\n\r\n";
+		$msg .= 'Voici le message qui vous est adressé :'."\r\n";
+		$msg .= '---------------------------------------'."\r\n";
+		$msg .= 'Date d\'arrivée : '.$dtfrom."\r\n";
+		$msg .= 'Date de départ : '.$dtto."\r\n";
+		$msg .= $message."\r\n";
+		$msg .= '---------------------------------------'."\r\n";
+			
 		/* Envoi de l'e-mail */
-        if (mail($to, $sujet, $msg, $header)) {
-		
-           echo("SUCCESS");
-         
-		   /* On détruit la variable $_POST */
-           unset($_POST);
-        }
-        else {
-            
+		if (mail ("$to", "$sujet", "$msg", "From: leverger@fr.ht")) {
+
+			echo("SUCCESS");
+			unset($_POST);		/* On détruit la variable $_POST */
+		}
+		else {   
 			echo('Erreur d\'envoi de l\'e-mail');
-        }
+		}
 	}
 }
 else {

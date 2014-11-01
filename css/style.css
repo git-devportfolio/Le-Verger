@@ -70,9 +70,9 @@ body {
     background-color: #2d2d2d;
 }
 
-    .ui-input:focus {
+/*.ui-input:focus {
         border: 1px solid #88bc85;
-    }
+    }*/
 
 
 /*
@@ -156,8 +156,8 @@ body {
 .main-quote {
     padding: 2em;
     margin: 0 auto;
-    font-family: cursive;
-    font-size: 1.4em;
+    font-family: 'Handlee', cursive;
+    font-size: 2.2em;
     color: #e8e8e8;
     text-align: justify;
     font-weight: normal;
@@ -204,7 +204,7 @@ body {
 
 .article-text {
     padding: 0 2em;
-    line-height: 1.8em;
+    line-height: 1.8;
     text-align: justify;
 }
 
@@ -290,9 +290,22 @@ body {
 
 
 /*
-    NOUS CONTACTER
+    NOUS CONTACTER FORM
 */
 
+#nous-contacter input:focus:required:invalid,
+#nous-contacter textarea:focus:required:invalid {
+    border: 1px solid #ff0000;
+}
+
+#nous-contacter input:focus:required:valid,
+#nous-contacter textarea:focus:required:valid {
+    border: 1px solid #88bc85;
+}
+
+#nous-contacter .invalid {
+    border: 1px solid #ff0000;
+}
 
 #nous-contacter:before {
     float: right;
@@ -352,7 +365,6 @@ body {
         text-decoration: none;
     }
 
-
 /*
     AUTRES CONTACTS
 */
@@ -391,7 +403,7 @@ body {
 
     .footer .article-address {
         font-size: large;
-        line-height: 1.8em;
+        line-height: 1.8;
         color: #88bc85;
         text-align: center;
         letter-spacing: 1px;
@@ -424,24 +436,36 @@ body {
  * Picker Date
 */
 
-.picker__table, 
-.picker__table th, 
+/*.picker {
+    padding: 0 2em;
+}*/
+
+.picker__table,
+.picker__table th,
 .picker__table tr td {
     border: 0;
 }
 
+.fieldset_wrapper {
+    position: relative;
+}
+
+
 /*
-    .footer-copyright:before {
-        position: absolute;
-        content: " ";
-        display: block;
-        left: 0;
-        bottom: 4.5em;
-        right: 0;
-        border-top: 1px solid #151515;
-        border-bottom: 1px solid #2f2f2f;
-    }
+ * Footer
 */
+
+.footer-copyright:before {
+    position: absolute;
+    content: " ";
+    display: block;
+    left: 0;
+    right: 0;
+    bottom: 4em;
+    border-top: 1px solid #151515;
+    border-bottom: 1px solid #2f2f2f;
+}
+
 .footer-nav-list {
     float: right;
 }
@@ -465,7 +489,26 @@ body {
                 color: #e8e8e8;
             }
 
-@media screen and (max-width: 640px) {
+
+/*
+ * MEDIA QUERIES
+*/
+
+@media (max-width:640px) {
+
+    .article-img-href {
+        display: block;
+    }
+}
+
+@media (max-width:768px) {
+
+    .article-img-href {
+        display: inline;
+    }
+}
+
+@media screen and (max-width: 1022px) {
 
     .header-logo {
         text-align: center;
@@ -485,14 +528,25 @@ body {
         max-width: initial;
     }
 
-    #nos-formules .article-text,
-    #nos-services .article-text,
-    #nos-tarifs .article-text {
-        min-height: initial;
+    #nous-retrouver,
+    #nos-services,
+    #nos-tarifs {
+        margin-top: 3em;
     }
+
+        #nos-formules .article-text,
+        #nos-services .article-text,
+        #nos-tarifs .article-text {
+            min-height: initial;
+        }
 
     .main-separator {
         width: 90%;
+    }
+
+    .main-quote {
+        padding: 1em;
+        font-size: 1.5em;
     }
 
     .main-info {
@@ -505,16 +559,9 @@ body {
         text-align: justify;
     }
 
-    .article-img-href {
-        display: block;
-    }
-
     /*
-    #nous-contacter:before {
-        right: 1em;
-        top: -4.5em;
-    }
-
+        ICON CONTACT
+    */
     #nous-contacter:before {
         display: block;
         float: none;
@@ -523,10 +570,12 @@ body {
         padding-left: 2em;
         content: url('../img/picto_nous_contacter.png');
     }
-	*/
-    #nous-contacter:before {
-        right: 1em;
-        top: -4em;
+
+    /*
+        FOOTER
+    */
+    .footer-article {
+        padding-top: 30px;
     }
 
     .footer-copyright {
@@ -538,6 +587,24 @@ body {
     }
 
     .footer-nav-list {
+        padding: 1em;
         float: none;
     }
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    font-size: 1.3em;
+    margin: 0;
+    background: #e21919;
+    color: #fff;
+    padding: 0.5em;
+    letter-spacing: 1px;
+}
+
+.browserupgrade a {
+    color: #fff;
 }

@@ -10,23 +10,43 @@ var initContactForm = function () {
         event.preventDefault();
 
         // Get some values from elements on the page:
-        var $form = $( this );
-		
-        var name = $form.find( "input[name='name']" ).val();
-        var email = $form.find( "input[name='email-from']" ).val();
-        var dtFrom = $form.find( "input[name='visit-date-from']" ).val();
-        var dtTo = $form.find( "input[name='visit-date-to']" ).val();
-        var message = $form.find( "textarea[name='message']" ).val();
-        var url = $form.attr( "action" );
+        var $form = $( this ),
+            urlAction = $form.attr( "action" );
 
-        if ( !name || !email || !message ) {
+        var $el_name = $form.find( "input[name='name']" ),
+            $el_email = $form.find( "input[name='email-from']" ),
+            $el_dtFrom = $form.find( "input[name='visit-date-from']" ),
+            $el_dtTo = $form.find( "input[name='visit-date-to']" ),
+            $el_message = $form.find( "textarea[name='message']" );
+
+        if ( !$el_name.get( 0 ).validity.valid ) {
+            $el_name.addClass( "invalid" );
             return;
         }
 
+        if ( !$el_email.get( 0 ).validity.valid ) {
+            $el_email.addClass( "invalid" );
+            return;
+        }
+
+        if ( !$el_message.get( 0 ).validity.valid ) {
+            $el_message.addClass( "invalid" );
+            return;
+        }
+
+        $form.find( "input[name='send']" ).val( 'Envoi en cours...' );
+        $form.find( "input[name='send']" ).prop( 'disabled', true );
+
         $.ajax( {
-            url: url,
+            url: urlAction,
             type: "POST",
-            data: { name: name, email: email, from: dtFrom, to: dtTo, message: message },
+            data: {
+                name: $el_name.val(),
+                email: $el_email.val(),
+                dtfrom: $el_dtFrom.val(),
+                dtto: $el_dtTo.val(),
+                message: $el_message.val()
+            },
             success: function ( data, textStatus, jqXHR ) {
 
                 if ( data === 'SUCCESS' ) {
